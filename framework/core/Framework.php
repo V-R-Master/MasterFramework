@@ -3,6 +3,12 @@
 class Framework
 {
     /**
+     *  文件路径及其他常量
+     */
+    public $file_env = 'env.php';
+    public $file_functions = 'functions.php';
+
+    /**
      *  启动入口
      */
     public static function run()
@@ -22,6 +28,7 @@ class Framework
         define('ROOT_PATH', getcwd() . DS); // 项目根目录 getcwd:获取当前工作路径根目录
         define('APP_PATH', ROOT_PATH . DS . 'application' . DS);
         define('FRAMEWORK_PATH', ROOT_PATH . DS . 'framework' . DS);
+        define('HELPERS_PATH', FRAMEWORK_PATH . 'helpers' . DS);
         define('PUBLIC_PATH', ROOT_PATH . DS . 'public' . DS);
         define('CONFIG_PATH', APP_PATH . DS . 'config' . DS);
         define('CONTROLLER_PATH', APP_PATH . DS . 'controller' . DS);
@@ -36,6 +43,15 @@ class Framework
         // 当前控制器和视图的路径
         define('CUR_CONTROLLER_PATH', CONTROLLER_PATH . MODEL . DS);
         define('CUR_VIEW_PATH', VIEW_PATH . MODEL . DS);
+
+        // 加载env配置文件
+        define('CONF_ENV', include(ROOT_PATH . 'env.php'));
+
+        // TODO 加载config下的其他配置文件
+
+        // todo 加载系统函数
+        include HELPERS_PATH . 'functions.php';
+
     }
 
     /**
