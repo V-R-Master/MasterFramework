@@ -12,7 +12,7 @@
 function get_env_conf($key)
 {
     $conf = CONF_ENV;
-    if ($conf[$key]) {
+    if (isset($conf[$key])) {
         return $conf[$key];
     }
 
@@ -30,8 +30,8 @@ function mysql_conf($mysql_key)
     $conf = CONF_ENV;
     $mysql_conf = $conf['mysql'];
 
-    if (!empty($mysql_conf)) {
-        if ($mysql_conf[$mysql_key]) {
+    if (isset($mysql_conf) && !empty($mysql_conf)) {
+        if (isset($mysql_conf[$mysql_key])) {
             return $mysql_conf[$mysql_key];
         }
     }

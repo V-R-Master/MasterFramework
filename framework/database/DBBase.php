@@ -1,4 +1,7 @@
 <?php
+namespace framework\database;
+include 'medoo.php';
+use PDO;
 /**
  *  查询构造器基类
  *

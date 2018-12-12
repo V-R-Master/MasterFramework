@@ -7,6 +7,7 @@
  *  (版本库维护此文件，自己拷贝文件并重命名为 env.php)
  */
 return [
+    'db_type'=>'mysql', // 目前只有mysql数据库
 
     // 数据库配置信息
     'mysql'=>[

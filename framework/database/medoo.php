@@ -1,5 +1,5 @@
 <?php
-
+namespace framework\database;
 /*!
  * Medoo database framework
  * http://medoo.in
@@ -8,6 +8,10 @@
  * Copyright 2016, Angel Lai
  * Released under the MIT license
  */
+
+use Exception;
+use PDO;
+use PDOException;
 
 class medoo
 {
@@ -78,7 +82,6 @@ class medoo
                     } else {
                         $dsn = $type . ':host=' . $this->server . ($is_port ? ';port=' . $port : '') . ';dbname=' . $this->database_name;
                     }
-
                     // Make MySQL using standard quoted identifier
                     $commands[] = 'SET SQL_MODE=ANSI_QUOTES';
                     break;

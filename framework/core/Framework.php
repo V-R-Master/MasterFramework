@@ -5,8 +5,8 @@ class Framework
     /**
      *  文件路径及其他常量
      */
-    public $file_env = 'env.php';
-    public $file_functions = 'functions.php';
+    static $file_env = 'env.php';
+    static $file_functions = 'functions.php';
 
     /**
      *  启动入口
@@ -44,10 +44,10 @@ class Framework
         define('CUR_CONTROLLER_PATH', CONTROLLER_PATH . MODEL . DS);
         define('CUR_VIEW_PATH', VIEW_PATH . MODEL . DS);
 
-        // 加载env配置文件
-        define('CONF_ENV', include(ROOT_PATH . 'env.php'));
+        // 加载env配置文件 (php7之后可以定义数组常量)
+        define('CONF_ENV', include(ROOT_PATH . static::$file_env));
 
-        // TODO 加载config下的其他配置文件
+        // TODO 加载config下的其他配置文件，应该一次加载到位，不维护文件名称
 
         // todo 加载系统函数
         include HELPERS_PATH . 'functions.php';
